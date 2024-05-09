@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h> // Esta biblioteca es específica de Windows, si estás en otro sistema operativo necesitarás una alternativa
+
+// Función para imprimir el cuadro en la posición dada
+void imprimirCuadro(int x, int y) {
+    // Limpiar la pantalla
+    system("cls");
+
+    // Imprimir el cuadro en la posición dada
+    for (int i = 0; i < y; i++) {
+        printf("\n");
+    }
+    for (int i = 0; i < x; i++) {
+        printf(" ");
+    }
+    printf("+---+\n");
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < x; j++) {
+            printf(" ");
+        }
+        printf("|   |\n");
+    }
+    for (int i = 0; i < x; i++) {
+        printf(" ");
+    }
+    printf("+---+\n");
+}
+
+int main() {
+    int x = 0, y = 0;
+
+    // Imprimir el cuadro en la posición inicial
+    imprimirCuadro(x, y);
+
+    // Bucle principal para leer las teclas presionadas y mover el cuadro
+    while (1) {
+        char tecla = getch(); // Obtener la tecla presionada sin necesidad de presionar Enter
+
+        // Mover el cuadro según la tecla presionada
+        switch(tecla) {
+            case 'w':
+                y--;
+                break;
+            case 's':
+                y++;
+                break;
+            case 'a':
+                x--;
+                break;
+            case 'd':
+                x++;
+                break;
+            default:
+                break;
+        }
+
+        // Imprimir el cuadro en la nueva posición
+        imprimirCuadro(x, y);
+    }
+
+    return 0;
+}
